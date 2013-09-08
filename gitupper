@@ -31,6 +31,13 @@ def upping():
 
 def ConfigSectionMap(section):
     dict(Config.items('repos'))
+
+if os.path.exists("/usr/bin/git"):
+    print "\033[1;32mGit exists...\033[1;m"
+else:
+    print "Can't update git repos without git."
+    sys.exit()
+
 if first == "-ls":
     listing()
 elif first == "-up":
