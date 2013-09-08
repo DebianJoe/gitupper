@@ -2,6 +2,7 @@
 import os
 import ConfigParser
 from sys import argv
+import sys
 
 Config = ConfigParser.ConfigParser()
 Config.read(os.path.expanduser('~/gitupper/repos'))
@@ -35,4 +36,5 @@ if first == "-ls":
 elif first == "-up":
     upping()
 else:
-    print "Must be ran as 'gitupper -up' or 'gitupper -ls'"
+    print "Must be ran as \033[1;31mgitupper -up\033[1;m or \033[1;31mgitupper -ls\033[1;m"
+    sys.exit()
