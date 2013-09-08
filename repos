@@ -2,6 +2,6 @@
 # when gitupper is executed.
 
 [repos]
-dwm : ~/dwm/
-bbqsystem : ~/bbqsystem/
+dwm : ~/dwm-6.0/
+bbqsystem : ~/bbqsystool/
 
