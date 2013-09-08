@@ -26,5 +26,5 @@ use:
 * gitupper -ls  
 to list files included in the ~/gitupper/repos config file.
 
-* gitupper -up
+* gitupper -up  
 to automatically update all directories in ~/gitupper/repos
