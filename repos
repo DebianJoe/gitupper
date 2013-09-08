@@ -1,0 +1,7 @@
+# Here is where you specify the directories to be updated
+# when gitupper is executed.
+
+[repos]
+dwm : ~/dwm/
+bbqsystem : ~/bbqsystem/
+
