@@ -1,0 +1,4 @@
+gitupper
+========
+
+automate git updates
