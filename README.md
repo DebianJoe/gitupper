@@ -5,8 +5,8 @@ automate git updates
 
 Installing
 ========
-```
 clone this repo  
+```
 cd to the newly created directory  
 chmod 755 gitupper
 ```
