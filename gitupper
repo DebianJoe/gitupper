@@ -54,7 +54,7 @@ def bad_input():
     print "where [repo_name] is the name displayed during -ls,"
     print "which is listed on the left side of the 'repos' config file."
     print "if the repo nick has spaces, include it in quotations."
-    print 'for example: \033[1;31mgitupper -up "my repo"'
+    print 'for example: \033[1;31mgitupper -up "my repo"\033[1;m'
     sys.exit()
 
 def git_check():
