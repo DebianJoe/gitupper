@@ -27,4 +27,7 @@ use:
 to list files included in the ~/gitupper/repos config file.
 
 * gitupper -up  
-to automatically update all directories in ~/gitupper/repos
+to automatically update all directories in ~/gitupper/repos  
+
+* gitupper -up {repo-name}  
+will look for a repo tied to {repo-name} and ONLY update that one.  The {repo-name} parameter should be the name that the repo is referred to by "gitupper -ls", and is tied to values on the left side of the "repos" config file.

@@ -6,11 +6,17 @@ import sys
 
 Config = ConfigParser.ConfigParser()
 Config.read(os.path.expanduser('~/gitupper/repos'))
-script, first = argv
-
-#this will print a listing of all sections.
+if len(sys.argv) < 2:
+    bad_input()
+elif len(sys.argv) == 2:
+    script, first = argv
+elif len(sys.argv) == 3:
+    script, first, second = argv
+else:
+    pass
 
 def listing():
+    ## Lists nicks for repos in config ##
     options = Config.items('repos')
     for option in options:
         i = 0
@@ -18,7 +24,7 @@ def listing():
         i += 1
 
 def upping():
-    ## The World of hurt begins here ##
+    ## Updates ALL repos ##
     options = Config.items('repos')
     for option in options:
         i = 0
@@ -29,19 +35,53 @@ def upping():
         os.system(str(current))
         i += 1
 
-def ConfigSectionMap(section):
-    dict(Config.items('repos'))
+def one_up():
+    ## Updates only specified repo ##
+    print "\033[1:31m%s \033[1;m" % second
+    try:
+        repo = Config.get('repos', second)
+        only = ("cd " + repo +
+                " && git pull")
+        os.system(str(only))
+    except ConfigParser.NoOptionError:
+        print "\n!!!\033[1;31m%s doesn't exist or isn't a config option !!!\n\033[1;m" % second
+        sys.exit()
+    
 
-if os.path.exists("/usr/bin/git"):
-    print "\033[1;32mGit exists...\033[1;m"
-else:
-    print "Can't update git repos without git."
+def bad_input():
+    print "\nMust be ran as \033[1;31mgitupper -up\033[1;m or \033[1;31mgitupper -ls\033[1;m"
+    print "or to update only one repo, use \033[1;31mgitupper -up [repo_name]\033[1;m"
+    print "where [repo_name] is the name displayed during -ls,"
+    print "which is listed on the left side of the 'repos' config file."
+    print "if the repo nick has spaces, include it in quotations."
+    print 'for example: \033[1;31mgitupper -up "my repo"'
     sys.exit()
 
-if first == "-ls":
-    listing()
-elif first == "-up":
-    upping()
-else:
-    print "Must be ran as \033[1;31mgitupper -up\033[1;m or \033[1;31mgitupper -ls\033[1;m"
-    sys.exit()
+def git_check():
+    if os.path.exists("/usr/bin/git"):
+        print "\n\033[1;32mGit exists...\033[1;m\n"
+    else:
+        print "\nCan't update git repos without git.\n"
+        sys.exit()
+
+def updates(argv):
+    if len(argv) == 2:
+        if first == "-ls":
+            listing()
+        elif first == "-up":
+            upping()
+        else:
+            bad_input()
+    elif len(argv) == 3:
+        if first == "-ls":
+            listing()
+        elif first == "-up":
+            one_up()
+        else:
+            bad_input()
+    else:
+        bad_input()
+
+if __name__ == "__main__":
+    git_check()
+    updates(argv)
