@@ -7,7 +7,7 @@ import sys
 Config = ConfigParser.ConfigParser()
 Config.read(os.path.expanduser('~/gitupper/repos'))
 if len(sys.argv) < 2:
-    bad_input()
+    pass
 elif len(sys.argv) == 2:
     script, first = argv
 elif len(sys.argv) == 3:
