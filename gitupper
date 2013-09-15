@@ -35,6 +35,32 @@ def upping():
         os.system(str(current))
         i += 1
 
+def cleaning():
+    ## Cleans ALL repos ##
+    options = Config.items('repos')
+    for option in options:
+        i = 0
+        print "\033[1;31m" + option[i] + "\033[1;m"
+        repo = Config.get('repos', option[i])
+        current = ("cd " + repo +
+                   " && git gc && git prune")
+        os.system(str(current))
+        i += 1
+
+def fscking():
+    ## fsck ALL repos ##
+    options = Config.items('repos')
+    for option in options:
+        i = 0
+        print "\033[1;31m" + option[i] + "\033[1;m"
+        repo = Config.get('repos', option[i])
+        current = ("cd " + repo +
+                   " && git fsck")
+        os.system(str(current))
+        i += 1
+
+
+
 def one_up():
     ## Updates only specified repo ##
     print "\033[1:31m%s \033[1;m" % second
@@ -50,6 +76,7 @@ def one_up():
 
 def bad_input():
     print "\nMust be ran as \033[1;31mgitupper -up\033[1;m or \033[1;31mgitupper -ls\033[1;m"
+    print "or to do basic cleaning \033[1;31mgitupper -gc\033[1;m"
     print "or to update only one repo, use \033[1;31mgitupper -up [repo_name]\033[1;m"
     print "where [repo_name] is the name displayed during -ls,"
     print "which is listed on the left side of the 'repos' config file."
@@ -70,6 +97,9 @@ def updates(argv):
             listing()
         elif first == "-up":
             upping()
+        elif first == "-gc":
+            cleaning()
+            fscking()
         else:
             bad_input()
     elif len(argv) == 3:
