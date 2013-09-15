@@ -75,7 +75,8 @@ def one_up():
     
 
 def bad_input():
-    print "\nMust be ran as \033[1;31mgitupper -up\033[1;m or \033[1;31mgitupper -ls\033[1;m"
+    print "\nMust be ran as \033[1;31mgitupper -up\033[1;m for mass updates" 
+    print "or \033[1;31mgitupper -ls\033[1;m to list repos"
     print "or to do basic cleaning \033[1;31mgitupper -gc\033[1;m"
     print "or to update only one repo, use \033[1;31mgitupper -up [repo_name]\033[1;m"
     print "where [repo_name] is the name displayed during -ls,"
