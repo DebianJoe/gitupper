@@ -59,8 +59,6 @@ def fscking():
         os.system(str(current))
         i += 1
 
-
-
 def one_up():
     ## Updates only specified repo ##
     print "\033[1:31m%s \033[1;m" % second
@@ -73,7 +71,6 @@ def one_up():
         print "\n!!!\033[1;31m%s doesn't exist or isn't a config option !!!\n\033[1;m" % second
         sys.exit()
     
-
 def bad_input():
     print "\nMust be ran as \033[1;31mgitupper -up\033[1;m for mass updates" 
     print "or \033[1;31mgitupper -ls\033[1;m to list repos"
